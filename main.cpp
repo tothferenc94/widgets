@@ -7,6 +7,7 @@
 #include "ChooseBox.h"
 #include "textbox.h"
 #include "Button.h"
+#include <functional>
 
 using namespace std;
 using namespace genv;
@@ -45,6 +46,7 @@ int main()
     gout.open(600,600);
     vector<Widget*> w;
     vector<string> elemek;
+
     elemek.push_back("totfe2");
     elemek.push_back("tarba4");
     elemek.push_back("orbba");
@@ -60,8 +62,12 @@ int main()
     ChooseBox * b5 = new ChooseBox(30,250,160,20,elemek);
     ChooseBox * b6 = new ChooseBox(230,250,330,75,elemek);
     TextBox * b7 = new TextBox(200,10,120,30);
-    Button * b8 = new Button(400,10,120,30);
 
+    Lambda *b8 = new Lambda(350,10,50,50,[&b3,b4]()
+        {
+            b3->kapcsolo=!b3->kapcsolo;
+            b4->kapcsolo=!b4->kapcsolo;
+         });
 
     w.push_back(b1);
     w.push_back(b2);
